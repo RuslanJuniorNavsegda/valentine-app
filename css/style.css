@@ -1,3 +1,4 @@
+/* styles.css */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -9,6 +10,7 @@ header {
   background-color: #ff66b2;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.5s;
 }
 
 header h1 {
@@ -18,50 +20,17 @@ header h1 {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0;
-}
-
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 1.8em;
-  }
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 80vh;
+  transition: transform 0.3s ease-in-out;
 }
 
 .heart {
   position: relative;
   width: 150px;
   height: 150px;
-  background-color: #ff66b2;
   margin: 20px auto;
   transform: rotate(-45deg);
-  transition: opacity 0.5s;
-}
-
-.heart::before,
-.heart::after {
-  content: "";
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background-color: #ff66b2;
-}
-
-.heart::before {
-  top: -75px;
-  left: 0;
-}
-
-.heart::after {
-  top: 0;
-  left: 75px;
+  animation: pulse 1.5s infinite;
+  display: block; /* Вернули сердце в начальное состояние */
 }
 
 .heart-photo {
@@ -75,28 +44,44 @@ main {
   transform: rotate(45deg);
 }
 
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1) rotate(-45deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(-45deg);
+  }
+}
+
 .romantic-quote {
   font-size: 1.2em;
   color: #ff66b2;
   font-style: italic;
-  margin-top: 10px;
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 
 .love-button {
   display: block;
   margin: 20px auto;
-  padding: 10px 20px;
+  padding: 12px 24px;
   background-color: #ff66b2;
   color: #fff;
   font-size: 1.2em;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .love-button:hover {
   background-color: #ff2f92;
+  transform: scale(1.1);
+}
+
+.love-button.glow {
+  box-shadow: 0 0 15px #ff2f92;
 }
 
 #hearts-container {
@@ -115,7 +100,7 @@ main {
   color: #ff66b2;
   font-size: 20px;
   opacity: 0.8;
-  animation: fall linear infinite;
+  animation: fall 4s linear infinite;
 }
 
 @keyframes fall {
@@ -126,5 +111,15 @@ main {
   100% {
     transform: translateY(100vh);
     opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8em;
+  }
+  .love-button {
+    font-size: 1em;
+    padding: 10px 20px;
   }
 }
