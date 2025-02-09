@@ -1,16 +1,26 @@
-/* styles.css */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #fff5f8;
+  font-family: "Georgia", serif;
+  background: linear-gradient(135deg, #1a002b, #3a0055);
   text-align: center;
+  color: #fff;
+  animation: pulse-bg 6s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-bg {
+  0% {
+    background: linear-gradient(135deg, #1a002b, #3a0055);
+  }
+  100% {
+    background: linear-gradient(135deg, #24003d, #55007a);
+  }
 }
 
 header {
-  background-color: #ff66b2;
+  background-color: #6a0572;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.5s;
+  transition: background-color 0.5s, transform 0.5s;
 }
 
 header h1 {
@@ -20,28 +30,73 @@ header h1 {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+header h1.fade-in {
+  animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.rain-active header h1 {
+  transform: scale(1.1);
+  color: #ff66ff;
 }
 
 .heart {
   position: relative;
-  width: 150px;
-  height: 150px;
-  margin: 20px auto;
+  width: 100px;
+  height: 100px;
+  margin: 50px auto;
+  background-color: #ff00ff;
   transform: rotate(-45deg);
   animation: pulse 1.5s infinite;
-  display: block; /* Вернули сердце в начальное состояние */
 }
 
-.heart-photo {
+@keyframes float-hearts {
+  0% {
+    transform: translateY(0px) scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.float-heart {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  width: 125px;
-  height: 125px;
+  color: #ff66ff;
+  font-size: 14px;
+  animation: float-hearts 3s infinite ease-in-out;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #ff00ff;
   border-radius: 50%;
-  object-fit: cover;
-  transform: rotate(45deg);
+}
+
+.heart::before {
+  top: -50px;
+  left: 0;
+}
+
+.heart::after {
+  top: 0;
+  left: 50px;
 }
 
 @keyframes pulse {
@@ -54,34 +109,28 @@ header h1 {
   }
 }
 
-.romantic-quote {
-  font-size: 1.2em;
-  color: #ff66b2;
-  font-style: italic;
-  opacity: 1;
-  transition: opacity 0.5s;
-}
-
 .love-button {
   display: block;
   margin: 20px auto;
   padding: 12px 24px;
-  background-color: #ff66b2;
+  background: linear-gradient(45deg, #ff00ff, #d400d4);
   color: #fff;
   font-size: 1.2em;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
 }
 
 .love-button:hover {
-  background-color: #ff2f92;
+  background: linear-gradient(45deg, #d400d4, #ff00ff);
   transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
 }
 
 .love-button.glow {
-  box-shadow: 0 0 15px #ff2f92;
+  box-shadow: 0 0 25px #ff00ff;
 }
 
 #hearts-container {
@@ -97,7 +146,7 @@ header h1 {
 
 .heart-falling {
   position: absolute;
-  color: #ff66b2;
+  color: #ff66ff;
   font-size: 20px;
   opacity: 0.8;
   animation: fall 4s linear infinite;
@@ -112,6 +161,18 @@ header h1 {
     transform: translateY(100vh);
     opacity: 0;
   }
+}
+
+.romantic-quote {
+  font-size: 1.2em;
+  color: #ff66ff;
+  font-style: italic;
+  opacity: 1;
+  transition: opacity 0.5s, transform 1s ease-in-out;
+}
+
+.romantic-quote.fade-in {
+  animation: fadeIn 2s ease-out;
 }
 
 @media (max-width: 600px) {
