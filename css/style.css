@@ -175,6 +175,65 @@ header h1.fade-in {
   animation: fadeIn 2s ease-out;
 }
 
+.love-test {
+  background: #ffe6e9;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 500px;
+  margin: 30px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.love-test h2 {
+  color: #d6336c;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.test-question {
+  margin: 10px 0;
+  text-align: left;
+}
+
+.test-question label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.test-question select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #d6336c;
+  font-size: 14px;
+}
+
+.test-button {
+  background: #d6336c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.test-button:hover {
+  background: #b52e5a;
+}
+
+.test-result {
+  font-size: 18px;
+  color: #d6336c;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
 @media (max-width: 600px) {
   header h1 {
     font-size: 1.8em;
@@ -182,5 +241,31 @@ header h1.fade-in {
   .love-button {
     font-size: 1em;
     padding: 10px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .love-test {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .love-button,
+  .test-button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
+  .love-test {
+    padding: 15px;
   }
 }
